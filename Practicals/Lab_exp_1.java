@@ -33,8 +33,8 @@ class Bike{//creating class
     void compute(){//calculating rent by taking Days as an input
         for(int i = 0; i < days; i++){
             if(i<=5){
-                rent+=100;
-            }else if(i<=10){
+                rent+=500;
+            }else if(i>5 && i<=10){
                 rent+=400;
             }else{
                 rent+=200;
