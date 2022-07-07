@@ -1,5 +1,6 @@
 package Lab_Activities;
 
+//Java Program to Display Hike of Employee
 import java.util.Scanner;
 
 class Employee{
