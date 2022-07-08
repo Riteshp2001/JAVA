@@ -32,7 +32,15 @@ public class Exception {
         finally{
             System.out.println("This shows even if exception is handled or not");
         }
-        //3)throw(keyword) to show the exception
+        //3)throw(keyword) to show the exception, it is User defined Exception
+        int age = 21;
+        int weight = 40;
+        if(age<18 && weight<40){
+            throw new ArithmeticException("Not Eligible");// here Arithmetic exception is compile time exception as we are providing exception to print from our end system doesnt run and give us this exception
+        }else{
+            System.out.println("Your are eligible");
+        }
+
         //4)throws(keyword) to declare the Exception
 
 
@@ -41,7 +49,7 @@ public class Exception {
         //2)NullPointerException: if any value reaches or provided(initializing) is Null
         String a = null;
         System.out.println(a.length());
-        //3)ArrayIndexoutofBoundsException: if we are initializing value greater than length of array
+        //3)Array(or String)IndexoutofBoundsException: if we are initializing value greater than length of array/String
         int[] arr = new int[10];
         arr[20]=6;
         //4)NumberFormatException: Converting from one format to another format
