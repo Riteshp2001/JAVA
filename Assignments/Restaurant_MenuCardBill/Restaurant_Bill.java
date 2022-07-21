@@ -18,7 +18,7 @@ class Breakfast{
     }
 
     void breakfast_card(){
-        System.out.println("\nDishes for Breakfast");
+        System.out.println("Dishes for Breakfast");
         for(int i = 0;i<menu_elements_break.length;i++){
             for(int j =i;j<=i;j++){
                 System.out.println(i+1+") "+menu_elements_break[i]+"-->"+menu_elements_price_break[i]);
@@ -40,7 +40,7 @@ class Lunch extends Breakfast{
     }
 
     void lunch_card(){
-        System.out.println("\nDishes for Lunch");
+        System.out.println("Dishes for Lunch");
         for(int i = 0;i<menu_elements_lunch.length;i++){
             for(int j =i;j<=i;j++){
                 System.out.println(i+1+") "+menu_elements_lunch[i]+"-->"+menu_elements_price_lunch[i]);
@@ -50,8 +50,8 @@ class Lunch extends Breakfast{
 }
 
 class Dinner extends Lunch{
-    private String[] menu_elements_dinner = {"Naan","Pizza","","Cold Drink"};
-    private int[] menu_elements_price_dinner = {15,65,100,25,155,135,35};
+    private String[] menu_elements_dinner = {"Naan","Pizza","Wine","Roti","Butter Chiken","Cold Drink"};
+    private int[] menu_elements_price_dinner = {15,65,350,25,175,35};
 
     public String[] getMenu_elements_dinner() {
         return menu_elements_dinner;
@@ -62,7 +62,7 @@ class Dinner extends Lunch{
     }
 
     void dinner_card(){
-        System.out.println("\nDishes for Dinner");
+        System.out.println("Dishes for Dinner");
         for(int i = 0;i<menu_elements_dinner.length;i++){
             for(int j =i;j<=i;j++){
                 System.out.println(i+1+") "+menu_elements_dinner[i]+"-->"+menu_elements_price_dinner[i]);
@@ -84,7 +84,6 @@ class Billing extends Dinner {//Hierarchical Inheritence
     private int Total_Bill = 0;
     int bill_elem = 0;
     Scanner sc = new Scanner(System.in);
-    Menucard m = new Menucard();
 
     public void setTotal_Bill(int total_Bill) {
         Total_Bill = total_Bill;
@@ -95,24 +94,25 @@ class Billing extends Dinner {//Hierarchical Inheritence
     }
 
     void Breakfast_Billing() {
-        String Billing_values="";
+        String Billing_values="temp";
         int[] breakfast_price = getMenu_elements_price_break();
         String[] breakfast_select = getMenu_elements_break();
         System.out.println("Choose Food you want we to Serve you in Breakfast Section (Select only numerical values)");
+        breakfast_card();
         String option = sc.nextLine();
         while(!option.equals("x")){
-            if(Integer.parseInt(option)>breakfast_select.length){
+            int parsed_value = Integer.parseInt(option);
+            if((parsed_value-1)>breakfast_select.length){
                 System.out.println("Please Select from given Food Lists!\n More Delicious Food On the Way in Future!!");
             }
-            int num = breakfast_price[Integer.parseInt(option)];
-            System.out.println("Nice "+breakfast_select[Integer.parseInt(option)]+" is added to your list");
+            int num = breakfast_price[parsed_value-1];
+            System.out.println("Nice "+breakfast_select[parsed_value-1] +" is added to your list");
             setTotal_Bill(Total_Bill+num);
-            Billing_values += breakfast_select[Integer.parseInt(option)]+"-->"+ breakfast_price[Integer.parseInt(option)];
+            Billing_values += breakfast_select[parsed_value-1]+"-->"+ breakfast_price[parsed_value-1];
             billing_elements[bill_elem]=Billing_values;
             bill_elem++;
-            Billing_values="";
             System.out.println("More?");
-            m.breakfast_card();
+            breakfast_card();
             System.out.println("Select Dish: ");
             option = sc.nextLine();
         }
@@ -123,20 +123,22 @@ class Billing extends Dinner {//Hierarchical Inheritence
         int[] lunch_price = getMenu_elements_price_lunch();
         String[] lunch_select = getMenu_elements_lunch();
         System.out.println("Choose Food you want we to Serve you in Lunch Section (Select only numerical values)");
+        lunch_card();
         String option = sc.nextLine();
         while(!option.equals("x")){
-            if(Integer.parseInt(option)>lunch_select.length){
+            int parsed_value = Integer.parseInt(option);
+            if((parsed_value-1)>lunch_select.length){
                 System.out.println("Please Select from given Food Lists!\n More Delicious Food On the Way in Future!!");
             }
-            int num = lunch_price[Integer.parseInt(option)];
-            System.out.println("Nice "+lunch_select[Integer.parseInt(option)]+" is added to your list");
+            int num = lunch_price[parsed_value-1];
+            System.out.println("Nice "+lunch_select[parsed_value-1]+" is added to your list");
             setTotal_Bill(Total_Bill+num);
-            Billing_values += lunch_select[Integer.parseInt(option)]+"-->"+ lunch_price[Integer.parseInt(option)];
+            Billing_values += lunch_select[parsed_value-1]+"-->"+ lunch_price[parsed_value-1];
             billing_elements[bill_elem]=Billing_values;
             bill_elem++;
             Billing_values="";
             System.out.println("More?");
-            m.lunch_card();
+            lunch_card();
             System.out.println("Select Dish: ");
             option = sc.nextLine();
         }
@@ -147,20 +149,22 @@ class Billing extends Dinner {//Hierarchical Inheritence
         int[] dinner_price = getMenu_elements_price_dinner();
         String[] dinner_select = getMenu_elements_dinner();
         System.out.println("Choose Food you want we to Serve you in Dinner Section (Select only numerical values)");
+        dinner_card();
         String option = sc.nextLine();
         while(!option.equals("x")){
-            if(Integer.parseInt(option)>dinner_select.length){
+            int parsed_value = Integer.parseInt(option);
+            if((parsed_value-1)>dinner_select.length){
                 System.out.println("Please Select from given Food Lists!\n More Delicious Food On the Way in Future!!");
             }
-            int num = dinner_price[Integer.parseInt(option)];
-            System.out.println("Nice "+dinner_select[Integer.parseInt(option)]+" is added to your list");
+            int num = dinner_price[parsed_value-1];
+            System.out.println("Nice "+dinner_select[parsed_value-1]+" is added to your list");
             setTotal_Bill(Total_Bill+num);
-            Billing_values += dinner_select[Integer.parseInt(option)]+"-->"+ dinner_price[Integer.parseInt(option)];
+            Billing_values += dinner_select[parsed_value-1]+"-->"+ dinner_price[parsed_value-1];
             billing_elements[bill_elem]=Billing_values;
             bill_elem++;
             Billing_values="";
             System.out.println("More?");
-            m.dinner_card();
+            dinner_card();
             System.out.println("Select Dish: ");
             option = sc.nextLine();
         }
@@ -191,14 +195,11 @@ public class Restaurant_Bill {
             m.Menu();
             System.out.println("\n\nPlease Choose : \n1 -->  Breakfast Section \n2 -->  Lunch Section \n3 -->  Dinner Section\nX -->  Get Bill");
             options = sc.nextLine().toLowerCase();
-            if(options.equals("1")){
-                b.Breakfast_Billing();
-            } else if (options.equals("2")) {
-                b.Lunch_Billing();
-            } else if (options.equals("3")) {
-                b.Dinner_Billing();
-            } else if (options.equals("x")) {
-                b.End_Bill();
+            switch (options) {
+                case "1" -> b.Breakfast_Billing();
+                case "2" -> b.Lunch_Billing();
+                case "3" -> b.Dinner_Billing();
+                case "x" -> b.End_Bill();
             }
         }while(!options.equals("x"));
     }
