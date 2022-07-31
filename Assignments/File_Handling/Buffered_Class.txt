@@ -1,0 +1,5 @@
+This is Buffered Writer added into text
+This is Buffered Writer added into text1
+This is Buffered Writer added into text2
+This is Buffered Writer added into text3
+This is Buffered Writer added into text4
